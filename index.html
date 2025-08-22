@@ -1024,8 +1024,8 @@
 
         // Video play functionality
         function playVideo(videoSrc) {
-            const modal = document.getElementById('imageModal');
-            const modalContent = modal.querySelector('.modal-content');
+            // Find the clicked video thumbnail
+            const clickedThumbnail = event.currentTarget;
             
             // Process YouTube URLs to ensure proper embedding
             let embedSrc = videoSrc;
@@ -1054,10 +1054,9 @@
                 thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
             }
             
-            // Clear existing content
-            modalContent.innerHTML = `
-                <span class="close" onclick="closeModal()">&times;</span>
-                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 15px;">
+            // Replace the thumbnail with an iframe
+            clickedThumbnail.innerHTML = `
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; width: 100%; border-radius: 15px;">
                     <iframe 
                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;" 
                         src="${embedSrc}" 
@@ -1068,19 +1067,46 @@
                 </div>
             `;
             
-            // Set modal to full screen
-            modal.style.display = 'block';
-            modal.style.width = '100%';
-            modal.style.height = '100%';
-            modal.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+            // Add a close button to restore the thumbnail
+            const closeButton = document.createElement('div');
+            closeButton.className = 'video-close-button';
+            closeButton.innerHTML = '&times;';
+            closeButton.style.position = 'absolute';
+            closeButton.style.top = '10px';
+            closeButton.style.right = '10px';
+            closeButton.style.color = 'white';
+            closeButton.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            closeButton.style.borderRadius = '50%';
+            closeButton.style.width = '30px';
+            closeButton.style.height = '30px';
+            closeButton.style.display = 'flex';
+            closeButton.style.justifyContent = 'center';
+            closeButton.style.alignItems = 'center';
+            closeButton.style.cursor = 'pointer';
+            closeButton.style.zIndex = '100';
+            closeButton.style.fontSize = '20px';
             
-            // Center the content
-            modalContent.style.position = 'absolute';
-            modalContent.style.top = '50%';
-            modalContent.style.left = '50%';
-            modalContent.style.transform = 'translate(-50%, -50%)';
-            modalContent.style.width = '80%';
-            modalContent.style.maxWidth = '1200px';
+            closeButton.onclick = function(e) {
+                e.stopPropagation();
+                // Restore the thumbnail
+                clickedThumbnail.innerHTML = `
+                    <img src="${thumbnailUrl}" alt="Video Thumbnail" style="width:100%; height:100%; object-fit:cover;">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-duration">1:23</div>
+                `;
+                
+                // Restore the click event
+                clickedThumbnail.onclick = function() {
+                    playVideo(videoSrc);
+                };
+            };
+            
+            clickedThumbnail.appendChild(closeButton);
+            
+            // Remove the click event to prevent multiple iframes
+            clickedThumbnail.onclick = null;
         }
 
         // Close modal when pressing Escape key
@@ -1093,4 +1119,3 @@
 
     </body>
 </html>
-
