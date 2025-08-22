@@ -214,7 +214,7 @@
                     </div>
                 </div>
 
-                <div class="thumbnail-card" onclick="openModal('https://github.com/mdismailkhanmahi-droid/Axvrenox-wob/blob/7a96f63a752655a8f21c5dde5aff8fd0759fa363/pp.png')" data-link="https://github.com/mdismailkhanmahi-droid/Axvrenox-wob/blob/7a96f63a752655a8f21c5dde5aff8fd0759fa363/pp.png">
+                <div class="thumbnail-card" onclick="openModal(this.getAttribute('data-link'))" data-link="https://github.com/mdismailkhanmahi-droid/Axvrenox-wob/blob/7a96f63a752655a8f21c5dde5aff8fd0759fa363/pp.png">
                     <div class="category-tag lifestyle">Lifestyle</div>
                     <div class="thumbnail-image">
                         <img src="pp.png" alt="Lifestyle Thumbnail">
@@ -813,6 +813,12 @@
             const modalImg = document.getElementById('modalImage');
             modal.style.display = 'block';
             
+            // Handle invalid URLs
+            if (!imageSrc || imageSrc === 'http/jgy6vt6f/huvy67f') {
+                console.error('Invalid image source:', imageSrc);
+                imageSrc = 'images/placeholder.txt'; // Fallback to placeholder
+            }
+            
             // Process GitHub URLs to get raw content
             if (imageSrc && imageSrc.includes('github.com') && !imageSrc.includes('raw.true')) {
                 // Convert GitHub blob URLs to raw URLs
@@ -1006,4 +1012,5 @@
 
     </body>
 </html>
+
 
