@@ -1903,9 +1903,10 @@ body {
 }
 
 .thumbnail-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-30px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     border-color: rgba(120, 211, 255, 0.3);
+    z-index: 5;
 }
 
 .thumbnail-image {
