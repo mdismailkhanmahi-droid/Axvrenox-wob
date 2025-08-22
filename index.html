@@ -228,10 +228,10 @@
                     </div>
                 </div>
 
-                <div class="thumbnail-card" onclick="openModal('http/jgy6vt6f/huvy67f')" data-link="http/jgy6vt6f/huvy67f">
+                <div class="thumbnail-card" onclick="openModal(this.getAttribute('data-link'))" data-link="images/tech-review-placeholder.png">
                     <div class="category-tag tech">Tech</div>
                     <div class="thumbnail-image">
-                        <img src="http/jgy6vt6f/huvy67f" alt="Tech Thumbnail">
+                        <img src="images/tech-review-placeholder.png" alt="Tech Thumbnail">
                     </div>
                     <div class="thumbnail-info">
                         <h3 class="thumbnail-title">Tech Reviewer</h3>
@@ -243,10 +243,10 @@
                 </div>
 
                 <!-- Row 2 -->
-                <div class="thumbnail-card" onclick="openModal('http/jgy6vt6f/huvy67f')" data-link="http/jgy6vt6f/huvy67f">
+                <div class="thumbnail-card" onclick="openModal(this.getAttribute('data-link'))" data-link="images/lifestyle-placeholder.png">
                     <div class="category-tag fitness">Fitness</div>
                     <div class="thumbnail-image">
-                        <img src="http/jgy6vt6f/huvy67f" alt="Fitness Thumbnail">
+                        <img src="images/lifestyle-placeholder.png" alt="Fitness Thumbnail">
                     </div>
                     <div class="thumbnail-info">
                         <h3 class="thumbnail-title">Fit Life Channel</h3>
@@ -257,10 +257,10 @@
                     </div>
                 </div>
 
-                <div class="thumbnail-card" onclick="openModal('http/jgy6vt6f/huvy67f')" data-link="http/jgy6vt6f/huvy67f">
+                <div class="thumbnail-card" onclick="openModal(this.getAttribute('data-link'))" data-link="images/2.png">
                     <div class="category-tag food">Food</div>
                     <div class="thumbnail-image">
-                        <img src="http/jgy6vt6f/huvy67f" alt="Food Thumbnail">
+                        <img src="images/2.png" alt="Food Thumbnail">
                     </div>
                     <div class="thumbnail-info">
                         <h3 class="thumbnail-title">Chef Master</h3>
@@ -271,10 +271,10 @@
                     </div>
                 </div>
 
-                <div class="thumbnail-card" onclick="openModal('http/jgy6vt6f/huvy67f')" data-link="http/jgy6vt6f/huvy67f">
+                <div class="thumbnail-card" onclick="openModal(this.getAttribute('data-link'))" data-link="images/pp.png">
                     <div class="category-tag travel">Travel</div>
                     <div class="thumbnail-image">
-                        <img src="http/jgy6vt6f/huvy67f" alt="Travel Thumbnail">
+                        <img src="images/pp.png" alt="Travel Thumbnail">
                     </div>
                     <div class="thumbnail-info">
                         <h3 class="thumbnail-title">World Explorer</h3>
@@ -296,7 +296,7 @@
             <div class="videos-grid">
                 <div class="video-card">
                     <div class="video-thumbnail" onclick="playVideo('https://youtube.com/shorts/bL-5ojHOHUE?si=oWGAXgyqFNKCxEkW')">
-                        <img src="http/jgy6vt6f/huvy67f" alt="Video Thumbnail" style="width:100%; height:100%; object-fit:cover;">
+                        <img src="videos/oo.mp4" alt="Video Thumbnail" style="width:100%; height:100%; object-fit:cover;">
 
 
                         <div class="play-button">
@@ -319,8 +319,8 @@
                 </div>
 
                 <div class="video-card">
-                    <div class="video-thumbnail" onclick="playVideo('https://www.youtube.com/embed/https://youtu.be/i5uyH2Z-vLc?si=Mgm6bt9XhEq6fEDX?autoplay=1')">
-                        <img src="http/jgy6vt6f/huvy67f" alt="Video Thumbnail" style="width:100%; height:100%; object-fit:cover;">
+                    <div class="video-thumbnail" onclick="playVideo('https://www.youtube.com/embed/i5uyH2Z-vLc?autoplay=1')">
+                        <img src="images/2.png" alt="Video Thumbnail" style="width:100%; height:100%; object-fit:cover;">
 
 
                         <div class="play-button">
@@ -344,7 +344,7 @@
 
                 <div class="video-card">
                     <div class="video-thumbnail" onclick="playVideo('https://www.youtube.com/embed/i5uyH2Z-vLc?autoplay=1')">
-                        <img src="http/jgy6vt6f/huvy67f" alt="Video Thumbnail" style="width:100%; height:100%; object-fit:cover;">
+                        <img src="images/pp.png" alt="Video Thumbnail" style="width:100%; height:100%; object-fit:cover;">
 
 
                         <div class="play-button">
@@ -691,10 +691,10 @@
                 for (let i = 0; i < numParticles; i++) {
                     let particle = document.createElement('div');
                     particle.classList.add('floating-particle');
-                    particle.style.left = ${Math.random() * 100}%;
-                    particle.style.top = ${Math.random() * 100}%;
-                    particle.style.animationDelay = ${Math.random() * 20}s;
-                    particle.style.animationDuration = ${Math.random() * 10 + 15}s;
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    particle.style.animationDelay = `${Math.random() * 20}s`;
+                    particle.style.animationDuration = `${Math.random() * 10 + 15}s`;
                     particlesContainer.appendChild(particle);
                 }
             }
@@ -706,7 +706,7 @@
             if (messageTextarea && charCounter) {
                 messageTextarea.addEventListener('input', function() {
                     const currentLength = this.value.length;
-                    charCounter.textContent = ${currentLength}/500 characters;
+                    charCounter.textContent = `${currentLength}/500 characters`;
                 });
             }
 
@@ -749,10 +749,10 @@
                     const cleanNumber = whatsapp.replace(/[^\d+]/g, '');
                     
                     // Construct WhatsApp message
-                    const whatsappMessage = Hi! My name is ${name}.\n\n${message}\n\nMy WhatsApp: ${whatsapp};
+                    const whatsappMessage = `Hi! My name is ${name}.\n\n${message}\n\nMy WhatsApp: ${whatsapp}`;
                     
                     // Create WhatsApp link to your number
-                    const whatsappLink = https://wa.me/8801754699899?text=${encodeURIComponent(whatsappMessage)};
+                    const whatsappLink = `https://wa.me/8801754699899?text=${encodeURIComponent(whatsappMessage)}`;
                     
                     // Open WhatsApp
                     window.open(whatsappLink, '_blank');
@@ -812,6 +812,14 @@
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
             modal.style.display = 'block';
+            
+            // Process GitHub URLs to get raw content
+            if (imageSrc && imageSrc.includes('github.com') && !imageSrc.includes('raw.true')) {
+                // Convert GitHub blob URLs to raw URLs
+                imageSrc = imageSrc.replace('github.com', 'raw.githubusercontent.com')
+                                  .replace('/blob/', '/');
+            }
+            
             modalImg.src = imageSrc;
             isZoomed = false;
             modalImg.style.transform = 'scale(1)';
@@ -848,7 +856,7 @@
             
             if (!isZoomed) {
                 modalImg.style.transform = 'scale(2)';
-                modalImg.style.transformOrigin = ${x}% ${y}%;
+                modalImg.style.transformOrigin = `${x}% ${y}%`;
                 modalImg.style.cursor = 'zoom-out';
                 isZoomed = true;
             } else {
@@ -864,7 +872,7 @@
             event.stopPropagation(); // Prevent modal from opening
             
             // Check if user has already liked this post
-            const hasLiked = localStorage.getItem(user-liked-${postId}) === 'true';
+            const hasLiked = localStorage.getItem(`user-liked-${postId}`) === 'true';
             
             if (hasLiked) {
                 // Show warning message
@@ -872,11 +880,11 @@
                 return;
             }
             
-            const likeCountElement = document.getElementById(like-count-${postId});
+            const likeCountElement = document.getElementById(`like-count-${postId}`);
             const heartIcon = event.currentTarget.querySelector('i');
             
             // Get current count from localStorage or start at 0
-            let currentCount = parseInt(localStorage.getItem(likes-${postId}) || '0');
+            let currentCount = parseInt(localStorage.getItem(`likes-${postId}`) || '0');
             
             // Increment count
             currentCount++;
@@ -885,8 +893,8 @@
             likeCountElement.textContent = currentCount;
             
             // Save to localStorage
-            localStorage.setItem(likes-${postId}, currentCount.toString());
-            localStorage.setItem(user-liked-${postId}, 'true');
+            localStorage.setItem(`likes-${postId}`, currentCount.toString());
+            localStorage.setItem(`user-liked-${postId}`, 'true');
             
             // Add heart animation and change color permanently
             heartIcon.style.color = '#ef4444';
@@ -939,13 +947,13 @@
         // Load like counts and liked status on page load
         document.addEventListener('DOMContentLoaded', function() {
             for (let i = 0; i < 9; i++) {
-                const savedCount = localStorage.getItem(likes-${i}) || '0';
-                const likeElement = document.getElementById(like-count-${i});
+                const savedCount = localStorage.getItem(`likes-${i}`) || '0';
+                const likeElement = document.getElementById(`like-count-${i}`);
                 if (likeElement) {
                     likeElement.textContent = savedCount;
                     
                     // Check if user has already liked this post and update heart color
-                    const hasLiked = localStorage.getItem(user-liked-${i}) === 'true';
+                    const hasLiked = localStorage.getItem(`user-liked-${i}`) === 'true';
                     if (hasLiked) {
                         const heartIcon = likeElement.parentElement.querySelector('i');
                         heartIcon.style.color = '#ef4444';
@@ -998,3 +1006,4 @@
 
     </body>
 </html>
+
