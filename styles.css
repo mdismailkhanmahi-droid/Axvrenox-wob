@@ -1297,6 +1297,7 @@ body {
     border-radius: 16px;
     overflow: hidden;
     transition: transform 0.3s ease;
+    height: 200px; /* Fixed height for consistency */
 }
 
 .video-thumbnail:hover {
@@ -1305,8 +1306,16 @@ body {
 
 .video-thumbnail img {
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: cover;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.video-thumbnail img.loaded {
+    opacity: 1;
 }
 
 .video-duration {
@@ -1903,10 +1912,23 @@ body {
 }
 
 .thumbnail-card:hover {
-    transform: translateY(-30px);
+    transform: translateY(-25px) scale(1.05);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     border-color: rgba(120, 211, 255, 0.3);
     z-index: 5;
+}
+
+@media (max-width: 768px) {
+    .thumbnail-card:hover {
+        transform: translateY(-10px) scale(1.03);
+    }
+}
+
+@media (max-width: 480px) {
+    .thumbnail-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
 }
 
 .thumbnail-image {
@@ -1914,15 +1936,45 @@ body {
     overflow: hidden;
 }
 
+.thumbnail-placeholder, .video-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(110deg, #1e293b 8%, #334155 18%, #1e293b 33%);
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.video-placeholder {
+    border-radius: 12px 12px 0 0;
+}
+
+@keyframes shine {
+    to {
+        background-position-x: -200%;
+    }
+}
+
 .thumbnail-image img {
     width: 100%;
     aspect-ratio: 16/9;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.thumbnail-image img.loaded {
+    opacity: 1;
 }
 
 .thumbnail-card:hover .thumbnail-image img {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .thumbnail-overlay {
@@ -2180,8 +2232,22 @@ body {
 }
 
 .video-card:hover {
-    transform: translateY(-30px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    transform: translateY(-25px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+}
+
+@media (max-width: 768px) {
+    .video-card:hover {
+        transform: translateY(-10px) scale(1.03);
+    }
+}
+
+@media (max-width: 480px) {
+    .video-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
 }
 
 .video-thumbnail {
@@ -2213,9 +2279,41 @@ body {
     z-index: 2;
 }
 
+@media (max-width: 768px) {
+    .play-button {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .play-button {
+        width: 40px;
+        height: 40px;
+    }
+}
+
 .play-button:hover {
     transform: translate(-50%, -50%) scale(1.1);
     box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+}
+
+.video-card:hover .play-button {
+    transform: translate(-50%, -50%) scale(0.8);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+}
+
+@media (max-width: 768px) {
+    .video-card:hover .play-button {
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+}
+
+@media (max-width: 480px) {
+    .video-card:hover .play-button {
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+    }
 }
 
 .play-button i {
@@ -3142,7 +3240,7 @@ body {
     }
     
     .hero-buttons {
-    flex-direction: column;
+        flex-direction: column;
     }
     
     .services-wrapper {
@@ -3152,6 +3250,7 @@ body {
     .thumbnails-grid,
     .videos-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
     
     .video-card .video-title {
@@ -3230,12 +3329,16 @@ body {
         position: static;
         transform: none;
         order: 2;
+        width: 100%;
+        margin: 10px 0;
     }
     
     .nav ul {
         display: flex;
         gap: 20px;
         justify-content: center;
+        flex-wrap: wrap;
+        padding: 0 10px;
     }
     
     .logo {
@@ -3323,6 +3426,10 @@ body {
         width: 150px;
     }
     
+    .section {
+        padding: 40px 0;
+    }
+    
     .hero-title {
         font-size: 36px;
     }
@@ -3338,6 +3445,16 @@ body {
     .thumbnails-grid,
     .videos-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 10px;
+    }
+    
+    .video-card {
+        margin-bottom: 15px;
+    }
+    
+    .video-info {
+        padding: 12px;
     }
     
     .video-card .video-title {
