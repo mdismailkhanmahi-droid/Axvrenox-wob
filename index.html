@@ -1054,11 +1054,11 @@
                 thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
             }
             
-            // Replace the thumbnail with an iframe
+            // Replace the thumbnail with an iframe directly without any overlay
             clickedThumbnail.innerHTML = `
-                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; width: 100%; border-radius: 15px;">
+                <div style="width: 100%; height: 100%; border-radius: 15px; overflow: hidden;">
                     <iframe 
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;" 
+                        style="width: 100%; height: 100%; border-radius: 15px;" 
                         src="${embedSrc}" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -1078,6 +1078,7 @@
             closeButton.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
             closeButton.style.borderRadius = '50%';
             closeButton.style.width = '30px';
+            closeButton.style.zIndex = '1000';
             closeButton.style.height = '30px';
             closeButton.style.display = 'flex';
             closeButton.style.justifyContent = 'center';
